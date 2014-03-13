@@ -46,7 +46,12 @@ and open the template in the editor.
 </style>
 <?php
 $foodJson;
-if (!$foodJson = file_get_contents("http://www.sodexo.fi/ruokalistat/output/daily_json/43/2014/03/10/fi")) {
+$date = date("Y/m/d");
+if (!$foodJson = file_get_contents(
+        "http://www.sodexo.fi/ruokalistat/output/daily_json/43/" .
+        $date . 
+        "/fi"
+        )) {
     die("Invalid JSON");
 }
 require_once 'Enum.php';
@@ -54,6 +59,8 @@ $data = json_decode($foodJson, TRUE);
 ?>
 <html>
     <head>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <title>Ruokalista</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
