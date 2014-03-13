@@ -46,6 +46,7 @@ and open the template in the editor.
 </style>
 <?php
 $foodJson;
+date_default_timezone_set("Europe/Helsinki");
 $date = date("Y/m/d");
 if (!$foodJson = file_get_contents(
         "http://www.sodexo.fi/ruokalistat/output/daily_json/43/" .
